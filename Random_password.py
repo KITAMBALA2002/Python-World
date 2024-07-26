@@ -10,5 +10,5 @@ def generate_random_word(length):
     return word
 
 random_word = generate_random_word(8)
-print(f"Random word: {random_word}")
+print(f"The generated password is : {random_word}")
 
