@@ -15,7 +15,7 @@ def connect_to_database():
     except mysql.connector.Error as e:
         print(f"Error connecting to MySQL database: {e}")
         return None
-def login():
+def admin_page():
     username = input("Username: ")
     password = getpass.getpass("Password: ")
 
@@ -27,10 +27,31 @@ def login():
     cursor.execute("SELECT * FROM Admin WHERE Username = %s", (username,))
     user = cursor.fetchone()
 
-    if user and user[1] == password:
-        pass
+    if user and user[2] == password: # Assuming user[2] is the password field
+        print("Login successful!")
+        # Additional code for successful login can go here
     else:
         print("Invalid username or password.")
-    cursor.close()
 
+    cursor.close()
+    mydb.close()
+
+def librarian():
+    username = input("Username: ")
+    password = getpass.getpass("Password: ")
+
+    mydb = connect_to_database()
+    if mydb is None:
+        return
+
+    cursor = mydb.cursor()
+    cursor.execute("SELECT * FROM Librarian WHERE Username = %s", (username,))
+    user = cursor.fetchone()
+
+    if user and user[2] == password:
+        print("Login successful!")
+    else:
+        print("Invalid username or password.")
+
+    cursor.close()
     mydb.close()
