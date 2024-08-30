@@ -28,8 +28,7 @@ def admin_page():
     user = cursor.fetchone()
 
     if user and user[2] == password: # Assuming user[2] is the password field
-        print("Login successful!")
-        # Additional code for successful login can go here
+        return True
     else:
         print("Invalid username or password.")
 
@@ -49,7 +48,7 @@ def librarian():
     user = cursor.fetchone()
 
     if user and user[2] == password:
-        print("Login successful!")
+        return True
     else:
         print("Invalid username or password.")
 
