@@ -38,13 +38,15 @@ def search_book():
 
     check =cursor.fetchall()
 
-    data=['Book Title','Author','Published','Genre','Book ISBN']
+    data=['Book Title','Author','Genre','Published','Book ISBN']
     if check:
         print('\n')
         for line in check:
             for i, line2 in enumerate(line):
                 print(f"{data[i]}: {line2}")
+        print('\n')
     else: print('Book can not be found')
+    mydb.commit()
 
 def check_borrowing():
     username =input ('Enter username: ')
